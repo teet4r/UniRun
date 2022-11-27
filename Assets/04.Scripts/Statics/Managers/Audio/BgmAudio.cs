@@ -12,6 +12,11 @@ public class BgmAudio : MonoBehaviour
 {
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
         audioSource = GetComponent<AudioSource>();
 
         Initialize();
@@ -38,6 +43,7 @@ public class BgmAudio : MonoBehaviour
     {
         for (int i = 0; i < clips.Length; i++)
             clipIndexOf.Add(clips[i].name, i);
+        Play(Bgm.BGM1);
     }
 
     public bool mute
@@ -49,6 +55,7 @@ public class BgmAudio : MonoBehaviour
     [SerializeField]
     AudioClip[] clips;
 
+    static BgmAudio instance = null;
     AudioSource audioSource;
     Dictionary<string, int> clipIndexOf = new Dictionary<string, int>();
 }

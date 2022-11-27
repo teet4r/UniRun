@@ -11,6 +11,11 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    void OnEnable()
+    {
+        
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!isDead && other.CompareTag(Tag.DEAD))
@@ -56,8 +61,9 @@ public class Player : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger(AnimatorID.DIE);
-        SoundManager.instance.sfxAudio.Play(Sfx.JUMP);
+        SoundManager.instance.sfxAudio.Play(Sfx.DIE);
         rigidbody.velocity = Vector2.zero;
+        GameManager.instance.OnPlayerDead();
     }
 
     public static Player instance = null;

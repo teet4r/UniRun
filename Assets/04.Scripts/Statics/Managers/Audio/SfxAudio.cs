@@ -12,6 +12,12 @@ public class SfxAudio : MonoBehaviour
 {
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+        Debug.Log("sfx awake");
+
         audioSource = GetComponent<AudioSource>();
 
         Initialize();
@@ -45,6 +51,7 @@ public class SfxAudio : MonoBehaviour
     [SerializeField]
     AudioClip[] clips;
 
+    static SfxAudio instance = null;
     AudioSource audioSource;
     Dictionary<string, int> clipIndexOf = new Dictionary<string, int>();
 }

@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     void Awake()
     {
+        #region Make Singleton
         if (instance != null)
         {
             Destroy(gameObject);
@@ -13,6 +14,7 @@ public class SoundManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
+        #endregion
     }
 
     public static SoundManager instance = null;
