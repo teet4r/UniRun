@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 66002810}
   - component: {fileID: 66002809}
   - component: {fileID: 66002808}
+  - component: {fileID: 66002811}
   m_Layer: 5
   m_Name: BgmButton
   m_TagString: Untagged
@@ -206,7 +207,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 66002809}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 66002811}
+        m_TargetAssemblyTypeName: ButtonToggle, Assembly-CSharp
+        m_MethodName: Toggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &66002809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +258,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66002806}
   m_CullTransparentMesh: 1
+--- !u!114 &66002811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66002806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fb4c65e3a68ac4ba6591875774f66a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  on:
+    sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+  off:
+    sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    color: {r: 1, g: 0.43921572, b: 0.43921572, a: 1}
 --- !u!1 &127166409
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +596,7 @@ GameObject:
   - component: {fileID: 384898216}
   - component: {fileID: 384898215}
   - component: {fileID: 384898214}
+  - component: {fileID: 384898217}
   m_Layer: 5
   m_Name: SfxButton
   m_TagString: Untagged
@@ -636,7 +668,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 384898215}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 384898217}
+        m_TargetAssemblyTypeName: ButtonToggle, Assembly-CSharp
+        m_MethodName: Toggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &384898215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +719,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384898212}
   m_CullTransparentMesh: 1
+--- !u!114 &384898217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384898212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3649ffc3dce6e24da3f5bb33c8437a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  on:
+    sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+  off:
+    sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    color: {r: 1, g: 0.43921572, b: 0.43921572, a: 1}
 --- !u!1 &437598102
 GameObject:
   m_ObjectHideFlags: 0
