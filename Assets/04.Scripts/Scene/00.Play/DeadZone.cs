@@ -6,6 +6,6 @@ public class DeadZone : MonoBehaviour
 {
     void Awake()
     {
-        transform.position = new Vector3(0f, -PlayCamera.halfHeight - 3f);
+        transform.position = new Vector3(0f, -MainCamera.halfHeight - 3f);
     }
 }

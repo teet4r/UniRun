@@ -11,16 +11,11 @@ public class Platform : MonoBehaviour
     // 컴포넌트가 활성화될때 마다 매번 실행되는 메서드
     void OnEnable()
     {
+        #region Reset Variables
         // 발판을 리셋하는 처리
         isStepped = false;
-        for (int i = 0; i < obstacles.Length; i++)
-        {
-            // 33%의 확률로 장애물 활성화
-            if (Random.Range(0, 3) == 0)
-                obstacles[i].SetActive(true);
-            else
-                obstacles[i].SetActive(false);
-        }
+        score = 1;
+        #endregion
 
         #region Valid Check
         if (spwanPosMinX > spwanPosMaxX)
@@ -29,12 +24,24 @@ public class Platform : MonoBehaviour
             Algorithm.Swap(ref spwanPosMinY, ref spwanPosMaxY);
         #endregion
 
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            // 25%의 확률로 장애물 활성화
+            if (Random.Range(0, 4) == 0)
+            {
+                obstacles[i].SetActive(true);
+                score++;
+            }
+            else
+                obstacles[i].SetActive(false);
+        }
+
         transform.position = new Vector2(Random.Range(spwanPosMinX, spwanPosMaxX), Random.Range(spwanPosMinY, spwanPosMaxY));
     }
 
     void Update()
     {
-        if (transform.position.x <= -PlayCamera.halfWidth - boxCollider.size.x)
+        if (transform.position.x <= -MainCamera.halfWidth - boxCollider.size.x)
             ObjectPool.instance.ReturnPlatform(this);
     }
 
@@ -44,7 +51,7 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.CompareTag(Tag.PLAYER) && !isStepped)
         {
             isStepped = true;
-            GameManager.instance.AddScore(1);
+            GameManager.instance.AddScore(score);
         }
     }
 
@@ -56,4 +63,5 @@ public class Platform : MonoBehaviour
 
     BoxCollider2D boxCollider;
     bool isStepped; // 플레이어 캐릭터가 밟았었는가
+    int score;
 }

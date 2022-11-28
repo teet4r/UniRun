@@ -8,6 +8,7 @@ public class JumpButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         target.Jump();
+
         GameManager.instance.Restart();
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UISprites : MonoBehaviour
+public class SpritesUI : MonoBehaviour
 {
     void Awake()
     {
@@ -21,7 +21,7 @@ public class UISprites : MonoBehaviour
             sprites[i].StopLoop();
     }
 
-    public static UISprites instance = null;
+    public static SpritesUI instance = null;
 
     public BackgroundLoop[] sprites;
 }

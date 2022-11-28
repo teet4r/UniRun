@@ -7,13 +7,13 @@ public class Player : MonoBehaviour
     {
         instance = this;
 
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    void OnEnable()
+    void Update()
     {
-        
+        FixPosition();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -42,8 +42,8 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
             jumpCount++;
-            rigidbody.velocity = Vector3.zero;
-            rigidbody.AddForce(Vector2.up * jumpForce);
+            rb.velocity = Vector3.zero;
+            rb.AddForce(Vector2.up * jumpForce);
             SoundManager.instance.sfxAudio.Play(Sfx.JUMP);
         }
 
@@ -53,8 +53,14 @@ public class Player : MonoBehaviour
     public void JumpDecelerate()
     {
         if (isDead) return;
-        if (rigidbody.velocity.y > 0f)
-            rigidbody.velocity *= 0.5f;
+        if (rb.velocity.y > 0f)
+            rb.velocity *= 0.5f;
+    }
+
+    void FixPosition()
+    {
+        if (transform.position.x != positionX)
+            transform.position = Vector2.Lerp(transform.position, new Vector2(positionX, transform.position.y), 0.1f);
     }
 
     void Die()
@@ -62,17 +68,18 @@ public class Player : MonoBehaviour
         isDead = true;
         animator.SetTrigger(AnimatorID.DIE);
         SoundManager.instance.sfxAudio.Play(Sfx.DIE);
-        rigidbody.velocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
         GameManager.instance.OnPlayerDead();
     }
 
     public static Player instance = null;
     public float jumpForce = 700f; // 점프 힘
+    public float positionX = -6f;
 
     int jumpCount = 0; // 누적 점프 횟수
     bool isGrounded = false; // 바닥에 닿았는지 나타냄
     bool isDead = false; // 사망 상태
 
-    Rigidbody2D rigidbody; // 사용할 리지드바디 컴포넌트
+    Rigidbody2D rb; // 사용할 리지드바디 컴포넌트
     Animator animator; // 사용할 애니메이터 컴포넌트
 }

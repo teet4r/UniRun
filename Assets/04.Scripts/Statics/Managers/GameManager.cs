@@ -12,13 +12,14 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        UISprites.instance.StartLoop();
+        SpritesUI.instance.StartLoop();
         StartCoroutine(_MakePlatform());
     }
 
     public void Restart()
     {
         if (!isGameover) return;
+        DBManager.bestScore = Mathf.Max(DBManager.bestScore, score);
         SceneManager.LoadScene(SceneName.PLAY);
     }
 
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         if (isGameover) return;
         score += value;
-        PlayCanvas.instance.scoreText.Update_(score);
+        PlayCanvas.instance.IngameUI.scoreText.Update_(score);
     }
 
     // 플레이어 캐릭터가 사망시 게임 오버를 실행하는 메서드
@@ -39,13 +40,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator _MakePlatform()
     {
-        WaitForSeconds wfs = new WaitForSeconds(platformSpawnTime);
         while (!isGameover)
         {
-            yield return wfs;
-
             var platform = ObjectPool.instance.GetPlatform();
             platform.gameObject.SetActive(true);
+            
+            yield return new WaitForSeconds(platformSpawnTime);
         }
     }
 

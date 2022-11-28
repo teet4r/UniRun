@@ -13,15 +13,14 @@ public class PlayCanvas : MonoBehaviour
     public void UIStart()
     {
         menuUI.SetActive(false);
-        jumpButton.gameObject.SetActive(true);
-        scoreText.gameObject.SetActive(true);
+        IngameUI.gameObject.SetActive(true);
+
         GameManager.instance.GameStart();
     }
 
     public static PlayCanvas instance = null;
 
-    public JumpButton jumpButton;
-    public ScoreText scoreText;
-    public GameObject gameOverUI;
     public GameObject menuUI;
+    public IngameUI IngameUI;
+    public GameObject gameOverUI;
 }

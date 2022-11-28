@@ -35,9 +35,9 @@ public class BackgroundLoop : MonoBehaviour
             // 게임 오브젝트를 왼쪽으로 일정 속도로 평행 이동하는 처리
             transform.Translate(Vector3.left * speed * Time.deltaTime);
             // 배경이 화면 밖을 완전히 벗어나면 위치 리셋
-            if (transform.position.x <= -MainCamera.instance.halfWidth * 2)
+            if (transform.position.x <= -MainCamera.halfWidth * 2)
             {
-                if (reuse)
+                if (loop)
                     Reposition();
                 else
                     Destroy(gameObject);
@@ -50,7 +50,7 @@ public class BackgroundLoop : MonoBehaviour
     void Reposition()
     {
         // 화면 오른쪽 밖으로 위치 초기화
-        transform.position = Vector2.right * (MainCamera.instance.halfWidth + width / 2);
+        transform.position = Vector2.right * (MainCamera.halfWidth + width / 2);
     }
 
     public float speed = 10f; // 이동 속도
@@ -58,7 +58,7 @@ public class BackgroundLoop : MonoBehaviour
 
     [SerializeField]
     [Tooltip("재사용 할지말지 여부, 재사용 하지않으면 바로 폐기")]
-    bool reuse = true;
+    bool loop = true;
 
     BoxCollider2D boxCollider;
     float width; // 배경의 가로 길이

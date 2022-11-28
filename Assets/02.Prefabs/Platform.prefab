@@ -368,9 +368,9 @@ MonoBehaviour:
   - {fileID: 1832961231703714}
   - {fileID: 1166831543635676}
   spwanPosMinX: 20
-  spwanPosMaxX: 30
-  spwanPosMinY: 2.5
-  spwanPosMaxY: -3.8
+  spwanPosMaxX: 25
+  spwanPosMinY: -4
+  spwanPosMaxY: 0
 --- !u!1 &1832961231703714
 GameObject:
   m_ObjectHideFlags: 0
