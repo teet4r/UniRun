@@ -45,14 +45,11 @@ public class Platform : MonoBehaviour
             ObjectPool.instance.ReturnPlatform(this);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void OnStepped()
     {
-        // 플레이어 캐릭터가 자신을 밟았을때 점수를 추가하는 처리
-        if (collision.gameObject.CompareTag(Tag.PLAYER) && !isStepped)
-        {
-            isStepped = true;
-            GameManager.instance.AddScore(score);
-        }
+        if (isStepped) return;
+        isStepped = true;
+        GameManager.instance.AddScore(score);
     }
 
     public GameObject[] obstacles; // 장애물 오브젝트들

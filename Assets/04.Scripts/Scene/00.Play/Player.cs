@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
             {
                 isGrounded = true;
                 jumpCount = 0;
+                // platform 컴포넌트가 있다면
+                if (collision.gameObject.TryGetComponent(out Platform platform))
+                    platform.OnStepped();
                 animator.SetBool(AnimatorID.GROUNDED, isGrounded);
             }
     }
