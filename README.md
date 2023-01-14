@@ -3,3 +3,4 @@
 
 - Tool: Unity 2D
 - Platform: Android
+- 제작기간: 약 10일
