@@ -16,7 +16,7 @@
 ## 3. 사용언어 & 도구
 - C#
 - Visual Studio
-- Unity 3D(에디터 버전: 2021.3.12f1)
+- Unity 2D(에디터 버전: 2021.3.12f1)
 
 </br>
 
@@ -63,6 +63,17 @@
 - 발판 위 장애물은 총 세개, 25% 확률로 각 장애물 활성화
 - 확률 구현에는 Random.Range() 사용
 - 장애물이 많은 발판일수록 추가되는 점수량 증가
+
+</div>
+</details>
+
+<details>
+<summary>데이터 저장</summary>
+<div markdown="1">
+
+- PlayerPrefs로 최고점수 갱신 및 저장
+- 시작화면에 보이도록 구성
+- bgm, sfx 설정 현황 또한 PlayerPrefs.SetInt()로 저장 및 불러오기(0으로 저장 시 off, 1로 저장 시 on)
 
 </div>
 </details>
